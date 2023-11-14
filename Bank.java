@@ -33,7 +33,7 @@ public class Bank {
 
     public boolean checkBankruptcy(Player player) {
         if (player.getAccount().getBalance() <= 0) {
-            // Handle bankruptcy (e.g., transfer properties, remove player from game)
+            // Handle bankruptcy (f.ex transfer properties, remove player from game)
             return true;
         }
         return false;

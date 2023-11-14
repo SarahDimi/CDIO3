@@ -1,68 +1,58 @@
 import java.util.Arrays;
 
-public class Player {
-    String navn;
-    SpilleBrik spilleBrik;
+class Player {
+    
+    String name;
+    PlayerPiece playerPiece;
     Account account;
-    Spiller[] spillere;
+    Player[] players;
     int position;
-    int antalSpiller;
+    int numberOfPlayers;
 
-    public Spiller(String navn, SpilleBrik spilleBrik, Account account, int antalSpiller){
-        this.navn = navn;
-        this.SpilleBrik = spilleBrik;
+    public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers){
+        this.name = name;
+        this.PlayerPiece = playerPiece;
         this.Account = account;
-        this.antalSpiller = antalSpiller;
+        this.numberOfPlayers = numberOfPlayers;
     }
 
-    public String getNavn(){
-        return navn;
+    public String getName(){
+        return name;
     }
 
-    public void setNavn(String navn){
-        this.navn = navn; 
+    public void setName(String name){
+        this.name = name; 
     }
 
-    public SpillerBrik getbrik(){
-        return spilleBrik;
+    public PlayerPiece getPiece(){
+        return playerPiece;
     }
 
     public Account getAccount(){
         return account;
     }
 
-    public int getPosition() {
-		return position;
-	}
-
-	public void setPosition(int position) {
-		this.position = position;
-	}
-
-    public Spiller(int antalSpillere) {
-		spillere = new Spiller[antalSpillere];
+    public Player(int numberOfPlayers) {
+		players = new Player[numberOfPlayers];
 	}
 	
-	public void tilføjSpiller(Spiller spiller, int index) {
-		spillere[index] = spiller;
+	public void addPlayer(Player player, int index) {
+		players[index] = player;
 	}
 
-	public Spiller getSpiller(int index) {
-		return spillere[index];
+	public Player getPlayer(int index) {
+		return players[index];
 	}
 	
-	public int antalSpillere()
-	{
-		return spillere.length;
+	public int numberOfPlayers() {
+		return players.length;
 	}
 	
-	public void sorterEfterPenge() {
-		
-	}
-
 	@Override
 	public String toString() {
-		return "Spillerliste: " + Arrays.toString(spillere);
+		return "Playerlist: " + Arrays.toString(players);
 	}
-	
-}
+
+        
+    }
+

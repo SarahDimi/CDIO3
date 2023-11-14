@@ -13,18 +13,13 @@ public class Account {
         return balance;
     }
 
-    public void deposit(int rollResult, int effectAmount, int specialFieldResult) {
+    public void collect(int rollResult, int effectAmount, int specialFieldResult) {
         int newBalance = balance + effectAmount;
         balance = newBalance;
     }
 
-    public void withdraw(int rollResult, int effectAmount, int specialFieldResult) {
+    public void pay(int rollResult, int effectAmount, int specialFieldResult) {
         int newBalance = balance;
-        if (rollResult == 10) {
-            int extraRollResult = roll.rollDice();
-            int extraEffectAmount = fieldEffects.getEffect(extraRollResult);
-            newBalance += extraEffectAmount;
-        }
         newBalance -= effectAmount;
         balance = Math.max(0, newBalance);
     }

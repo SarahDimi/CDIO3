@@ -1,2 +1,2 @@
 # CDIO3
-Monopoly spillet til CDIO 3
+Guide til hvordan spillet skal startes og åbnes:

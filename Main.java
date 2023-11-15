@@ -13,12 +13,15 @@ public class Main {
 
     int numPlayer = s.nextInt(); 
 
-    if (numPlayers >= 2 && numPlayers <= 4) {
+    if (numPlayer >= 2 && numPlayer <= 4) {
 
-        for(int i = 1; i <= numPlayers; i++ ){
+        for(int i = 1; i <= numPlayer; i++ ){
             players.add(new Player("Player " + i));
-        }
-
+        } 
+    } else {
+        System.out.println("Invalid number of players! Try again. The maximum amount is 4, and the minimum is 2.");
     }
+
+    scanner.close();
 }
 }

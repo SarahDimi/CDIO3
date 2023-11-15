@@ -2,6 +2,7 @@ package Main;
 
 public class Account {
     private int balance;
+    private int amount;
     Dicevalues roll = new Dicevalues();
     FieldEffects fieldEffects = new FieldEffects();
 
@@ -13,14 +14,13 @@ public class Account {
         return balance;
     }
 
-    public void collect(int rollResult, int effectAmount, int specialFieldResult) {
-        int newBalance = balance + effectAmount;
+    public void deposit(int amount) {
+        int newBalance = balance + amount;
         balance = newBalance;
     }
 
-    public void pay(int rollResult, int effectAmount, int specialFieldResult) {
-        int newBalance = balance;
-        newBalance -= effectAmount;
+    public void withdraw(int amount) {
+        int newBalance = balance - amount ;
         balance = Math.max(0, newBalance);
     }
     

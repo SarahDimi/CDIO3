@@ -12,7 +12,7 @@ public class Bank {
     }
 
     public void passStart(Player player) {
-        player.getAccount().deposit(PASS_START_MONEY, 0, 0); // Deposit 2M to player's account
+        player.getAccount().deposit(PASS_START_MONEY); // Deposit 2M to player's account
     }
 
     public void buyField(Player player, int fieldIndex, int price) {
@@ -21,14 +21,14 @@ public class Bank {
             return;
         }
         
-        player.getAccount().withdraw(0, price, 0); // Withdraw the price from the player's account
+        player.getAccount().withdraw(0); // Withdraw the price from the player's account
         fieldOwnership.put(fieldIndex, player); // Set player as the owner of the field
         System.out.println("Fields succesfully purchased");
     }
 
     public void payRent(Player payer, Player owner, int rentAmount) {
-        payer.getAccount().withdraw(0, rentAmount, 0); // Withdraw rent from payer's account
-        owner.getAccount().deposit(0, rentAmount, 0); // Deposit rent to owner's account
+        payer.getAccount().withdraw(0); // Withdraw rent from payer's account
+        owner.getAccount().deposit(0); // Deposit rent to owner's account
     }
 
     public boolean checkBankruptcy(Player player) {
@@ -61,14 +61,14 @@ public class Bank {
     // Handle financial effects of drawing a chance card
 public void handleChanceCardEffect(Player player, int amount) {
     if (amount >= 0) {
-        player.getAccount().deposit(amount, 0, 0); // Deposit if amount is positive
+        player.getAccount().deposit(amount); // Deposit if amount is positive
     } else {
-        player.getAccount().withdraw(0, -amount, 0); // Withdraw if amount is negative
+        player.getAccount().withdraw(0); // Withdraw if amount is negative
     }
 }
 
 // Handle jail fines
 public void payJailFine(Player player, int fineAmount) {
-    player.getAccount().withdraw(0, fineAmount, 0);
+    player.getAccount().withdraw(0);
 }
 }

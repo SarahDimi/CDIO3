@@ -34,7 +34,7 @@ class ChanceCard {
     public void applyCardEffect(Player player, String cardMessage) {
         if (cardMessage.equals("Advance to Go (Collect $2)")) {
             // Also need to move the player to Go
-            player.addMoney(2);
+            player.getAccount().deposit(2);
             System.out.println(player.getName() + " Advances to Go and collects $2");
         } else if (cardMessage.equals("Move up to 5 fields forward")) {
             // Implement the logic to move the player forward up to 5 fields
@@ -43,7 +43,7 @@ class ChanceCard {
         } else if (cardMessage.equals("Move one field forward or draw another Chance card")) {
             // Implement the logic to move the player forward by one field or draw another chance card
         } else if (cardMessage.equals("You have eaten too much candy, pay $2 to the bank")) {
-            player.payMoney(2);
+            player.getAccount().deposit(2);
             System.out.println(player.getName() + " pays $2 to the bank for eating to much candy");
         } else if (cardMessage.equals("Free field! Move to an ORANGE or GREEN field. If available, you get it for free, otherwise pay rent.")) {
             // Implement logic for moving to an ORANGE or GREEN field and handling property transactions
@@ -71,20 +71,3 @@ class ChanceCard {
         }
     }
 }
-
-
-    /*class MonopolyGame {
-    public static void main(String[] args) {
-        Player player1 = new Player("Car");
-
-        ChanceCard chanceCard = new ChanceCard();
-
-        // Simulate drawing a chance card
-        String cardMessage = chanceCard.drawCard();
-        System.out.println(player1.getName() + " drew a chance card: " + cardMessage);
-
-        // Apply the chance card's effect
-        chanceCard.applyCardEffect(player1, cardMessage);
-
-        // In in game, we can have similar logic for other chance cards within the ChanceCard class.*/
-

@@ -1,3 +1,4 @@
+package Main;
 public class PlayerPiece {
     private int position; 
     private String pieceName;

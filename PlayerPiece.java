@@ -2,7 +2,7 @@ public class PlayerPiece {
     private int position; 
     private String pieceName;
 
-    Public PlayerPiece(String PieceName) {
+    public PlayerPiece(String PieceName) {
         this.position = 0;
         this.playerName = pieceName;
     }

@@ -58,7 +58,7 @@ class ChanceCard {
         } else if (cardMessage.equals("Free field! Move to a PINK or DARK BLUE field. If available, you get it for free, otherwise pay rent.")) {
             // Implement logic for moving to a PINK or DARK BLUE field and handling property transactions
         } else if (cardMessage.equals("You have completed your homework. You receive $2 from the bank")) {
-            player.addMoney(2);
+            player.getAccount().deposit(2);
             System.out.println(player.getName() + " gets $2 for completing all of there homwwork");
         } else if (cardMessage.equals("Free field! Move to a RED field. If available, you get it for free, otherwise pay rent.")) {
             // Implement logic for moving to a RED field and handling property transactions

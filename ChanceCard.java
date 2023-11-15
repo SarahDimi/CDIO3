@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 class ChanceCard {
     private List<String> cards;
@@ -31,15 +32,20 @@ class ChanceCard {
         cards.remove(randomIndex); // Remove the drawn card from the deck
         return message;
     }
-    public void applyCardEffect(Player player, String cardMessage) {
+    public void applyCardEffect(Player player, String cardMessage, PlayerPiece playerPiece) {
         if (cardMessage.equals("Advance to Go (Collect $2)")) {
             // Also need to move the player to Go
             player.getAccount().deposit(2);
             System.out.println(player.getName() + " Advances to Go and collects $2");
         } else if (cardMessage.equals("Move up to 5 fields forward")) {
-            // Implement the logic to move the player forward up to 5 fields
+            Random random = new Random();
+            int spacesToMove = random.nextInt(6); // Generates a random number between 0 and 5 (inclusive)
+
+            playerPiece.moveForward(spacesToMove);
+            System.out.println(player.getName() + " moves " + spacesToMove + " spaces forward.");
         } else if (cardMessage.equals("Free field! Move to an ORANGE field. If available, you get it for free, otherwise pay rent.")) {
             // Implement logic for moving to an ORANGE field and handling property transactions
+            player.position(fields)
         } else if (cardMessage.equals("Move one field forward or draw another Chance card")) {
             // Implement the logic to move the player forward by one field or draw another chance card
         } else if (cardMessage.equals("You have eaten too much candy, pay $2 to the bank")) {

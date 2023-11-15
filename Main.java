@@ -22,6 +22,6 @@ public class Main {
         System.out.println("Invalid number of players! Try again. The maximum amount is 4, and the minimum is 2.");
     }
 
-    scanner.close();
+    s.close();
 }
 }

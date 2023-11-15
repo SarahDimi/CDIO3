@@ -4,7 +4,6 @@ public class Account {
     private int balance;
     private int amount;
     Dicevalues roll = new Dicevalues();
-    FieldEffects fieldEffects = new FieldEffects();
 
     public Account(int initialBalance) {
         this.balance = initialBalance;

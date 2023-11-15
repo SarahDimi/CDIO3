@@ -4,7 +4,7 @@ public class PlayerPiece {
 
     public PlayerPiece(String PieceName) {
         this.position = 0;
-        this.playerName = pieceName;
+        this.pieceName = pieceName;
     }
     public String getPieceName() {
         return pieceName;
@@ -15,11 +15,11 @@ public class PlayerPiece {
     public void resetPosition() {
         position = 0;
     }
-    public void moveFoward(int spaces) {
-        position += spaces;
+    public void moveForward(int spacesToMove) {
+        position += spacesToMove;
     }
-    public void moveBackwards(int spaces) {
-        position -= spaces;
+    public void moveBackwards(int spacesToMove) {
+        position -= spacesToMove;
     }
     public String toString() {
         return pieceName + " is at space " + position; 

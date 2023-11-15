@@ -52,7 +52,6 @@ class Player {
 	public String toString() {
 		return "Playerlist: " + Arrays.toString(players);
 	}
-
-        
-    }
+    
+}
 

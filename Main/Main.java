@@ -7,21 +7,31 @@ public class Main {
     public static void main(String[] args) {
         List<Player> players = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
+        int numPlayers = 0;
 
-        System.out.println("Hello and Welcome to the Monopoly Game Junior! Enter the number of players: ");
+        System.out.println("Hello and Welcome to the Monopoly Game Junior!");
 
-        int numPlayers = scanner.nextInt();
-
-        if (numPlayers >= 2 && numPlayers <= 4) {
-            for (int i = 1; i <= numPlayers; i++) {
-                System.out.print("Enter the name for Player " + i + ": ");
-                String playerName = scanner.next();
-                players.add(new Player(playerName));
+        while (numPlayers < 2 || numPlayers > 4) {
+            System.out.print("Enter the number of players (2-4): ");
+            if (scanner.hasNextInt()) {
+                numPlayers = scanner.nextInt();
+                if (numPlayers < 2 || numPlayers > 4) {
+                    System.out.println("Invalid number of players! The number of players must be between 2 and 4.");
+                }
+            } else {
+                System.out.println("Please enter a valid number.");
+                scanner.next(); // Will loop the invalid input
             }
-        } else {
-            System.out.println("Invalid number of players! The number of players must be between 2 and 4.");
+        }
+
+        for (int i = 1; i <= numPlayers; i++) {
+            System.out.print("Enter the name for Player " + i + ": ");
+            String playerName = scanner.next();
+            players.add(new Player(playerName)); 
         }
 
         scanner.close();
+
+    
     }
 }

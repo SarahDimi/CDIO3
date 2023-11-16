@@ -9,8 +9,13 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int numPlayers = 0;
 
-        System.out.println("Hello and welcome to the Monopoly Game Junior!");
+        // Welcome message and game start confirmation
+        System.out.println("Hello and welcome to Monopoly Junior! If you are readu to play, write: " + "'yes' " + "in the terminal!");
+        String answer = scanner.nextLine();
 
+        if (answer.equalsIgnoreCase("yes")) {
+        
+        //Initialize the game with the corect amount of players
         while (numPlayers < 2 || numPlayers > 4) {
             System.out.print("Enter the number of players (2-4): ");
             if (scanner.hasNextInt()) {
@@ -28,7 +33,7 @@ public class Main {
             System.out.print("Enter the name for Player " + i + ": ");
             String playerName = scanner.next();
             PlayerPiece playerPiece = new PlayerPiece(playerName); // Assuming default constructor
-            Account account = new Account(initialBalance); // Assuming default constructor
+            Account account = new Account(20000); // Assuming default constructor
             players.add(new Player(playerName, playerPiece, account, numPlayers));
         }
 
@@ -36,4 +41,5 @@ public class Main {
 
     
     }
+}
 }

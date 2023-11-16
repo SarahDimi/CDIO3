@@ -9,7 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         int numPlayers = 0;
 
-        System.out.println("Hello and Welcome to the Monopoly Game Junior!");
+        System.out.println("Hello and welcome to the Monopoly Game Junior!");
 
         while (numPlayers < 2 || numPlayers > 4) {
             System.out.print("Enter the number of players (2-4): ");
@@ -19,7 +19,7 @@ public class Main {
                     System.out.println("Invalid number of players! The number of players must be between 2 and 4.");
                 }
             } else {
-                System.out.println("Please enter a valid number.");
+                System.out.println("Please enter a number between 2 and 4: ");
                 scanner.next(); // Will loop the invalid input
             }
         }
@@ -27,7 +27,9 @@ public class Main {
         for (int i = 1; i <= numPlayers; i++) {
             System.out.print("Enter the name for Player " + i + ": ");
             String playerName = scanner.next();
-            players.add(new Player(playerName)); 
+            PlayerPiece playerPiece = new PlayerPiece(playerName); // Assuming default constructor
+            Account account = new Account(initialBalance); // Assuming default constructor
+            players.add(new Player(playerName, playerPiece, account, numPlayers));
         }
 
         scanner.close();

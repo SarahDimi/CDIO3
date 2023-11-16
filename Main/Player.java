@@ -12,8 +12,8 @@ class Player {
 
     public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers){
         this.name = name;
-        this.PlayerPiece = playerPiece;
-        this.Account = account;
+        this.playerPiece = playerPiece;
+        this.account = account;
         this.numberOfPlayers = numberOfPlayers;
     }
 

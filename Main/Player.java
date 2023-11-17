@@ -48,6 +48,15 @@ class Player {
 	public int numberOfPlayers() {
 		return players.length;
 	}
+
+    public void updatePosition(int spaces, int boardSize) {
+        position = (position + spaces) % boardSize;
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
 	
 	@Override
 	public String toString() {

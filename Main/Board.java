@@ -6,7 +6,7 @@ import java.util.List;
 public class Board {
     private List<Field> fields;
     private List<Player> players;
-    private int currentPlayerIndex;
+    private int currentPlayerPosition;
     private List <ChanceCard> chancecard;
     private List <SpecialField> specialfield;
 
@@ -14,9 +14,10 @@ public class Board {
         fields = new ArrayList<>();
         specialfield = new ArrayList<>();
         players = new ArrayList<>();
-        currentPlayerIndex = 0;
+        currentPlayerPosition = 0;
         initializeBoard();
     }
+
 
     private void initializeBoard() {
         // Add your fields to the board

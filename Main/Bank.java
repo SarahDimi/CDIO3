@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
-    private Map<Integer, Player> fieldOwnership;
+    private static Map<Integer, Player> fieldOwnership;
     private static final int PASS_START_MONEY = 2000000; // 2M distributed for passing start
 
     public Bank() {
@@ -26,7 +26,7 @@ public class Bank {
         System.out.println("Fields succesfully purchased");
     }
 
-    public void payRent(Player payer, Player owner, int rentAmount) {
+    public static void payRent(Player payer, Player owner, int rentAmount) {
         payer.getAccount().withdraw(0); // Withdraw rent from payer's account
         owner.getAccount().deposit(0); // Deposit rent to owner's account
     }
@@ -39,8 +39,8 @@ public class Bank {
         return false;
     }
 
-    public Player getFieldOwner(int fieldIndex) {
-        return fieldOwnership.get(fieldIndex);
+    public static Player getFieldOwner(int fieldIndex) {
+        return fieldOwnership.getOrDefault(fieldIndex, null);
     }
 
     // Transfer ownership of all properties from one player to another

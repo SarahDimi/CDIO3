@@ -18,6 +18,8 @@ public class Board {
         initializeBoard();
     }
 
+
+
     // Each Field is placed in correct order according to its place on the board. Name, Prices and Rent shown.
 
     private void initializeBoard() {
@@ -47,5 +49,9 @@ public class Board {
         fields.add(new Field("Strandvejen",5,5));    //Dark blue field 1
         fields.add(new Field("Hellerup",5,5));      //Dark blue field 2
    
+    }
+
+    public int getBoardSize() {
+        return fields.size();
     }
 }

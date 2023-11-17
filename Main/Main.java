@@ -1,6 +1,7 @@
 package Main;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -8,6 +9,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         List<Player> players = new ArrayList<>();
         int numPlayers = 0;
+        Random random = new Random();
 
         System.out.println("Hello and welcome to Monopoly Junior! If you are ready to play, write: 'yes' in the terminal!");
         String answer = scanner.nextLine();
@@ -34,16 +36,14 @@ public class Main {
                 Account account = new Account(20000); // Assuming constructor for Account
                 players.add(new Player(playerName, playerPiece, account, numPlayers));
             }
+            scanner.close();
 
             // Initialize Board and ChanceCard
             Board board = new Board();
             ChanceCard chanceCard = new ChanceCard();
 
-            // Game Loop - Fixed Number of Rounds Example
-            int maxRounds = 30; // Example number of rounds
-            int currentRound = 0;
 
-            while (currentRound < maxRounds) {
+            while (true) {
             for (Player player : players) {
                 System.out.println(player.getName() + "'s turn.");
 
@@ -52,23 +52,15 @@ public class Main {
                 System.out.println(player.getName() + " rolls a " + diceRoll);
 
                 // Move player
-                int boardSize = board.getBoardSize(40); // Assuming getBoardSize() method in Board class
-                player.updatePosition(diceRoll, boardSize); // Assuming updatePosition method in Player class
+                int boardSize = board.getBoardSize(); 
+                player.updatePosition(diceRoll, boardSize); //Updates player position
                 System.out.println(player.getName() + " moves to position " + player.getPosition());
 
 
                 System.out.println(player.getName() + "'s turn ends.");
             }
-            currentRound++;
-            System.out.println("Round " + currentRound + " ends.");
-        }
-
-        System.out.println("Game Over after " + maxRounds + " rounds!");
-        scanner.close();
-
-        while(true){
-            
         }
     
+    }
     }
 }

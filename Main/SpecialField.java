@@ -8,9 +8,10 @@ public class SpecialField {
 
         }
 
+        // Visit Jail.
     public static class VisitJail extends SpecialField {
         public VisitJail() {
-            super("Visit Jail"); // Example parameters
+            super("Visit Jail"); 
         }
     
         public void visitJail(Player player){
@@ -18,20 +19,20 @@ public class SpecialField {
         }
     }
     
-
+        //Free Parking.
    public static class FreeParking extends SpecialField {
         public FreeParking() {
-            super("Free Parking"); // Example parameters
+            super("Free Parking"); 
         }
     
         public void park(Player player){
-            System.out.println(player.getName() + " its relaxing at Free Parking.");
+            System.out.println(player.getName() + " is relaxing at Free Parking.");
         }
     }    
-
+        //In Jail.
     public static class InJail extends SpecialField {
         public InJail() {
-            super("In Jail"); // Example parameters
+            super("In Jail"); 
         }
     
         public void inJail(Player player){
@@ -39,12 +40,12 @@ public class SpecialField {
         }
     }
     
-
+        //Start Field, with start salary and passing start salary.
 public static class StartField extends SpecialField {
-    private static final int SALARY = 2; // Example salary amount
+    private static final int SALARY = 2; // Salary amount
 
     public StartField() {
-        super("Start"); // Example parameters
+        super("Start"); 
     }
 
     public void landOnStart(Player player) {
@@ -60,3 +61,4 @@ public static class StartField extends SpecialField {
 
 }
 
+// We have placed the special fields into a serperate file in order to keep better track of the code.

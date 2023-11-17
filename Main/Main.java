@@ -65,5 +65,10 @@ public class Main {
 
         System.out.println("Game Over after " + maxRounds + " rounds!");
         scanner.close();
+
+        while(true){
+            
+        }
+    
     }
 }

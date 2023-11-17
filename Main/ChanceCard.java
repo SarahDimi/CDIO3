@@ -32,7 +32,7 @@ class ChanceCard {
         cards.remove(randomIndex); // Remove the drawn card from the deck
         return message;
     }
-    public void applyCardEffect(Player player, String cardMessage, Board board) {
+    public void applyCardEffect(Player player, String cardMessage, PlayerPiece playerPiece, int currentPlayerPosition) {
         if (cardMessage.equals("Advance to Go (Collect $2)")) {
             // Also need to move the player to Go
             player.getAccount().deposit(2);
@@ -48,7 +48,7 @@ class ChanceCard {
         
             // Get the current position of the player
             int currentPlayerPosition = playerPiece.getPosition();
-
+        
             // Calculate the number of spaces to move to reach the ORANGE field
             int spacesToMove = (orangeFieldIndex - currentPlayerPosition + Board.fields.size()) % Board.fields.size();
         

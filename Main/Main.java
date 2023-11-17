@@ -33,12 +33,15 @@ public class Main {
             System.out.print("Enter the name for Player " + i + ": ");
             String playerName = scanner.next();
             PlayerPiece playerPiece = new PlayerPiece(playerName); // Assuming default constructor
-            Account account = new Account(20000); // Assuming default constructor
+            Account account = new Account(2); // Assuming default constructor
             players.add(new Player(playerName, playerPiece, account, numPlayers));
         }
 
         scanner.close();
 
+        while(true){
+            
+        }
     
     }
 }

@@ -1,40 +1,62 @@
 package Main;
 
 public class SpecialField {
+
+    protected String name;
+
+        public SpecialField(String name) {
+
+        }
+
+    public static class VisitJail extends SpecialField {
+        public VisitJail() {
+            super("Visit Jail"); // Example parameters
+        }
     
-    public class VisitJail {
-    public Void visitJail(){
-            System.out.println("Enjoy your visit at jail");
-        
+        public void visitJail(Player player){
+            System.out.println(player.getName() + " is just visiting jail.");
+        }
     }
-}
-public class FreeParking {
-    public void Parking(){
-            System.out.println("Lazy fuck wait here");
+    
+
+   public static class FreeParking extends SpecialField {
+        public FreeParking() {
+            super("Free Parking"); // Example parameters
+        }
+    
+        public void park(Player player){
+            System.out.println(player.getName() + " its relaxing at Free Parking.");
+        }
+    }    
+
+    public static class InJail extends SpecialField {
+        public InJail() {
+            super("In Jail"); // Example parameters
+        }
+    
+        public void inJail(Player player){
+            System.out.println(player.getName() + " is in jail!");
+        }
     }
-}
+    
 
-public class InJail {
-    public void inJail(){
-        System.out.println("You got busted with a kilo of coke, go straight to jail");
+public static class StartField extends SpecialField {
+    private static final int SALARY = 2; // Example salary amount
+
+    public StartField() {
+        super("Start"); // Example parameters
     }
-}
 
-public class StartField {
-
-    private static final int SALARY = 2; // Constant salary amount for passing the start
-
-    public void Start(Player player) {
-        // When a player lands on Start, they collect a salary
+    public void landOnStart(Player player) {
         System.out.println(player.getName() + " has landed on Start. Collecting $" + SALARY);
-        player.deposit(SALARY); // Assuming the Player class has a method to add money
+        player.deposit(SALARY);
     }
 
     public void passStart(Player player) {
-        // When a player passes Start, they collect a salary
         System.out.println(player.getName() + " has passed Start. Collecting $" + SALARY);
-        player.deposit(SALARY); // Assuming the Player class has a method to add money
+        player.deposit(SALARY);
     }
 }
 
 }
+

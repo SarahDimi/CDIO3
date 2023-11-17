@@ -8,9 +8,11 @@ public class Board {
     private List<Player> players;
     private int currentPlayerIndex;
     private List <ChanceCard> chancecard;
+    private List <SpecialField> specialfield;
 
     public Board() {
         fields = new ArrayList<>();
+        specialfield = new ArrayList<>();
         players = new ArrayList<>();
         currentPlayerIndex = 0;
         initializeBoard();
@@ -18,25 +20,25 @@ public class Board {
 
     private void initializeBoard() {
         // Add your fields to the board
-        fields.add(new Start());
+        specialfield.add(new SpecialField.StartField());
         fields.add(new Field("Istergade number 0",1,1));
         fields.add(new Field("DTU",1,1));
         chancecard.add(new ChanceCard());
         fields.add(new Field("Blaagaards Plads",1,1));
         fields.add(new Field("Shamba",1,1));
-        fields.add(new VisitJail());
+        specialfield.add(new SpecialField.VisitJail());
         fields.add(new Field("Alis kebabshop",2,2));
         fields.add(new Field("Noerrebros Runddel",2,2));
         chancecard.add(new ChanceCard());
         fields.add(new Field("Amager",2,2));
         fields.add(new Field("Vesterbro",2,2));
-        fields.add(new Parking());
+        specialfield.add(new SpecialField.FreeParking());
         fields.add(new Field("Holte",3,3));
         fields.add(new Field("Gammel Holte",3,3));
         chancecard.add(new ChanceCard());
         fields.add(new Field("Campus bar",3,3));
         fields.add(new Field("Oesterbro",3,3));
-        fields.add(new injail());
+        specialfield.add(new SpecialField.InJail());
         fields.add(new Field("Frederiksberg",4,4));
         fields.add(new Field("The Zoo",4,4));
         chancecard.add(new ChanceCard());

@@ -19,28 +19,28 @@ public class Board {
     private void initializeBoard() {
         // Add your fields to the board
         fields.add(new Start());
-        fields.add(new BrownField1());
-        fields.add(new BrownField2());
+        fields.add(new Field("Istergade number 0",1,1));
+        fields.add(new Field("DTU",1,1));
         chancecard.add(new ChanceCard());
-        fields.add(new LightBlueField1());
-        fields.add(new LightBlueField2());
+        fields.add(new Field("Blaagaards Plads",1,1));
+        fields.add(new Field("Shamba",1,1));
         fields.add(new VisitJail());
-        fields.add(new Pinkfield1());
-        fields.add(new PinkField2());
+        fields.add(new Field("Alis kebabshop",2,2));
+        fields.add(new Field("Noerrebros Runddel",2,2));
         chancecard.add(new ChanceCard());
-        fields.add(new OrangeField1());
-        fields.add(new OrangeField2());
+        fields.add(new Field("Amager",2,2));
+        fields.add(new Field("Vesterbro",2,2));
         fields.add(new Parking());
-        fields.add(new RedField1());
-        fields.add(new RedField2());
+        fields.add(new Field("Holte",3,3));
+        fields.add(new Field("Gammel Holte",3,3));
         chancecard.add(new ChanceCard());
-        fields.add(new YellowField1());
-        fields.add(new YellowField2());
+        fields.add(new Field("Campus bar",3,3));
+        fields.add(new Field("Oesterbro",3,3));
         fields.add(new injail());
-        fields.add(new GreenField1());
-        fields.add(new GreenField2());
+        fields.add(new Field("Frederiksberg",4,4));
+        fields.add(new Field("The Zoo",4,4));
         chancecard.add(new ChanceCard());
-        fields.add(new DarkBlue1());
-        fields.add(new DarkBlue2());
+        fields.add(new Field("Strandvejen",5,5));
+        fields.add(new Field("Hellerup",5,5));
     }
 }

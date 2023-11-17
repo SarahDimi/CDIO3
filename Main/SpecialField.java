@@ -49,12 +49,12 @@ public static class StartField extends SpecialField {
 
     public void landOnStart(Player player) {
         System.out.println(player.getName() + " has landed on Start. Collecting $" + SALARY);
-        player.deposit(SALARY);
+        player.getAccount().deposit(SALARY);
     }
 
     public void passStart(Player player) {
         System.out.println(player.getName() + " has passed Start. Collecting $" + SALARY);
-        player.deposit(SALARY);
+        player.getAccount().deposit(SALARY);
     }
 }
 

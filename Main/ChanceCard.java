@@ -40,12 +40,33 @@ class ChanceCard {
         } else if (cardMessage.equals("Move up to 5 fields forward")) {
             Random random = new Random();
             int spacesToMove = random.nextInt(6); // Generates a random number between 0 and 5 (inclusive)
-
             playerPiece.moveForward(spacesToMove);
             System.out.println(player.getName() + " moves " + spacesToMove + " spaces forward.");
         } else if (cardMessage.equals("Free field! Move to an ORANGE field. If available, you get it for free, otherwise pay rent.")) {
-            // Implement logic for moving to an ORANGE field and handling property transactions
-            player.position(fields)
+            // Determine the target field index for the ORANGE field
+            int orangeFieldIndex = // Set the index for the ORANGE field;
+        
+            // Get the current position of the player
+            int currentPlayerPosition = playerPiece.getPosition();
+        
+            // Calculate the number of spaces to move to reach the ORANGE field
+            int spacesToMove = (orangeFieldIndex - currentPlayerPosition + Board.fields.size()) % Board.fields.size();
+        
+            // Move the player to the ORANGE field
+            playerPiece.moveForward(spacesToMove);
+        
+            // Check if the ORANGE field is available
+            Player owner = Bank.getFieldOwner(orangeFieldIndex);
+            if (owner == null) {
+                // The field is available, the player gets it for free
+                Bank.fieldOwnership.put(orangeFieldIndex, player);
+                System.out.println(player.getName() + " acquires the ORANGE field for free.");
+            } else {
+                // The field is owned by another player, pay rent
+                int rentAmount = // Set the rent amount for the ORANGE field;
+                Bank.payRent(player, owner, rentAmount);
+                System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the ORANGE field.");
+            }
         } else if (cardMessage.equals("Move one field forward or draw another Chance card")) {
             // Implement the logic to move the player forward by one field or draw another chance card
         } else if (cardMessage.equals("You have eaten too much candy, pay $2 to the bank")) {

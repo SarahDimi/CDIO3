@@ -9,6 +9,7 @@ public class Board {
     private int currentPlayerPosition;
     private List<ChanceCard> chancecard; // Assuming ChanceCard is a class you've defined
     private List<SpecialField> specialfield;
+    public  int boardSize = 24;
 
     public Board() {
         fields = new ArrayList<>();

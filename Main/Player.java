@@ -9,12 +9,16 @@ class Player {
     Player[] players;
     int position;
     int numberOfPlayers;
+    int numberOfJailCards;
+    int numberOfJailTurns;
 
     public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers){
         this.name = name;
         this.playerPiece = playerPiece;
         this.account = account;
         this.numberOfPlayers = numberOfPlayers;
+        this.numberOfJailCards = numberOfJailCards;
+        this.numberOfJailTurns = numberOfJailTurns;
     }
 
     public String getName(){

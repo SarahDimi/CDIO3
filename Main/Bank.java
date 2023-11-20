@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
-    private static Map<Integer, Player> fieldOwnership;
-    private static final int PASS_START_MONEY = 2000000; // 2M distributed for passing start
+    static Map<Integer, Player> fieldOwnership;
+    private static final int PASS_START_MONEY = 2; // 2M distributed for passing start
 
     public Bank() {
         fieldOwnership = new HashMap<>();
@@ -72,3 +72,4 @@ public void payJailFine(Player player, int fineAmount) {
     player.getAccount().withdraw(0);
 }
 }
+

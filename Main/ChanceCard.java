@@ -32,7 +32,7 @@ class ChanceCard {
         cards.remove(randomIndex); 
         return message;
     }
-    public void applyCardEffect(Player player, String cardMessage, PlayerPiece playerPiece, int currentPlayerPosition) {
+    public void applyCardEffect(Player player, String cardMessage, PlayerPiece playerPiece, int currentPlayerPosition, Board boardSize,List<Player> players) {
         Scanner scanner = new Scanner(System.in);
         if (cardMessage.equals("Advance to Go (Collect $2)")) {
             player.getAccount().deposit(2);
@@ -58,7 +58,8 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (orangeFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            // Hjælplærer spørgsmål
+            int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize) % boardSize);
         
             playerPiece.moveForward(spacesToMove);
         
@@ -215,7 +216,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (lightBlueFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = (lightBlueFieldIndex - currentPlayerPosition + Board.getBoardSize(totalSize)) % Board.Fields().size();
         
             playerPiece.moveForward(spacesToMove);
         
@@ -287,6 +288,17 @@ class ChanceCard {
                 System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the GREEN field.");
             }
         }
+        }else if(cardMessage.equals("You can get out of jail. Keep this card until you need it")){
+            player.numberOfJailCards++;
+
+        } else if(cardMessage.equals("It is you birthdday!! All the other player must give you $1. Congratulations!!")){
+            for (Player otherPlayer : players) {
+                if(!otherPlayer.equals(player)){
+                    otherPlayer.getAccount().withdraw(1);
+                    player.getAccount().deposit(1);
+                    System.out.println(otherPlayer.getName()+ " gives 1M to "+ player.getName()+ " for their birthday! ");
+                }
+            }
         }
     }
 }

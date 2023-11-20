@@ -95,7 +95,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (orangeFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         

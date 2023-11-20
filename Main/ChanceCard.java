@@ -10,7 +10,6 @@ class ChanceCard {
     public ChanceCard() {
         cards = new ArrayList<>();
         cards.add("Advance to Go (Collect $2)");
-        
         cards.add("Move up to 5 fields forward");
         cards.add("Free field! Move to a ORANGE field. If the field is available, you get it for free otherwise you must pay rent to the owner");
         cards.add("Move one field forward or pull a Chancecard more");

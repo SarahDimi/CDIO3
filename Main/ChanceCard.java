@@ -7,6 +7,7 @@ import java.util.Scanner;
 class ChanceCard {
     private List<String> cards;
 
+
     public ChanceCard() {
         cards = new ArrayList<>();
         cards.add("Advance to Go (Collect $2)");
@@ -42,7 +43,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (startFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+           int spacesToMove = ((startFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
 
@@ -59,7 +60,8 @@ class ChanceCard {
             currentPlayerPosition = playerPiece.getPosition();
         
             // Hjælplærer spørgsmål
-            int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize) % boardSize);
+            int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
+            
         
             playerPiece.moveForward(spacesToMove);
         
@@ -111,7 +113,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (greenFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+           int spacesToMove = ((greenFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -130,7 +132,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (lightBlueFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((lightBlueFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -155,7 +157,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (darkBlueFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((darkBlueFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -173,7 +175,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (pinkFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((pinkFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -195,7 +197,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (redFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((redFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -216,7 +218,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (lightBlueFieldIndex - currentPlayerPosition + Board.getBoardSize(totalSize)) % Board.Fields().size();
+            int spacesToMove = ((lightBlueFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -234,7 +236,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (redFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((redFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -256,7 +258,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (brownFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((brownFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         
@@ -274,7 +276,7 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            int spacesToMove = (yellowFieldIndex - currentPlayerPosition + Board.Fields().size()) % Board.Fields().size();
+            int spacesToMove = ((yellowFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
             playerPiece.moveForward(spacesToMove);
         

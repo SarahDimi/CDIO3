@@ -47,7 +47,7 @@ class ChanceCard {
             int orangeFieldIndex = // Set the index for the ORANGE field;
         
             // Get the current position of the player
-            int currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = playerPiece.getPosition();
         
             // Calculate the number of spaces to move to reach the ORANGE field
             int spacesToMove = (orangeFieldIndex - currentPlayerPosition + Board.fields.size()) % Board.fields.size();

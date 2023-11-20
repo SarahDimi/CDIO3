@@ -7,13 +7,14 @@ public class Board {
     private List<Field> fields;
     private List<Player> players;
     private int currentPlayerPosition;
-    private List <ChanceCard> chancecard;
-    private List <SpecialField> specialfield;
+    private List<ChanceCard> chancecard; // Assuming ChanceCard is a class you've defined
+    private List<SpecialField> specialfield;
 
     public Board() {
         fields = new ArrayList<>();
         specialfield = new ArrayList<>();
         players = new ArrayList<>();
+        chancecard = new ArrayList<>(); // Initialize the chancecard list here
         currentPlayerPosition = 0;
         initializeBoard();
     }
@@ -52,6 +53,16 @@ public class Board {
     }
 
     public int getBoardSize() {
-        return fields.size();
+        int totalSize = fields.size() + specialfield.size() + chancecard.size();
+        return totalSize;
     }
+
+
+
+    public Field getField(int position) {
+        return null;
+    }
+
+
+
 }

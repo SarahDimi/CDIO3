@@ -1,66 +1,104 @@
 package Main;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Player> players = new ArrayList<>();
         int numPlayers = 0;
-        Random random = new Random();
 
-        System.out.println("Hello and welcome to Monopoly Junior! If you are ready to play, write: 'yes' in the terminal!");
+        System.out.println("Hello and Welcome to Monopoly Junior! If you are ready to play, write 'yes' in the terminal.");
         String answer = scanner.nextLine();
 
-        if (answer.equalsIgnoreCase("yes")) {
-            while (numPlayers < 2 || numPlayers > 4) {
+        if(answer.equalsIgnoreCase("yes")){
+            while(numPlayers < 2 || numPlayers > 4){
                 System.out.print("Enter the number of players (2-4): ");
-                if (scanner.hasNextInt()) {
+                if(scanner.hasNextInt()){
                     numPlayers = scanner.nextInt();
-                    if (numPlayers < 2 || numPlayers > 4) {
-                        System.out.println("Invalid number of players! The number of players must be between 2 and 4.");
+                    if(numPlayers < 2 || numPlayers > 4){
+                        System.out.println("Invalid number of players! The number of players must be between 2 and 4."); 
                     }
                 } else {
                     System.out.println("Please enter a number between 2 and 4.");
                     scanner.next(); // Clear the invalid input
                 }
             }
-
-            // Initialize players
-            for (int i = 1; i <= numPlayers; i++) {
-                System.out.print("Enter the name for Player " + i + ": ");
-                String playerName = scanner.next();
-                PlayerPiece playerPiece = new PlayerPiece(playerName); // Assuming constructor for PlayerPiece
-                Account account = new Account(20000); // Assuming constructor for Account
-                players.add(new Player(playerName, playerPiece, account, numPlayers));
-            }
+        } else {
+            System.out.println("Exiting game.");
             scanner.close();
+            return; // Exit the program if the player does not enter 'yes'
+        }
 
-            // Initialize Board and ChanceCard
-            Board board = new Board();
-            ChanceCard chanceCard = new ChanceCard();
+        scanner.nextLine(); // Consume the newline after integer input
 
+        List<Player> players = setupPlayers(scanner, numPlayers);
+        Board board = new Board(); // Initialize the board
+        Bank bank = new Bank(); // Initialize the bank
+        ChanceCard chanceCard = new ChanceCard(); // Initialize ChanceCard
+        Dice dice = new Dice(6); // Initialize a dice with 6 sides
 
-            while (true) {
+        // Main game loop
+        while (!isGameOver(players)) {
             for (Player player : players) {
-                System.out.println(player.getName() + "'s turn.");
+                // Player's turn
+                int diceRoll = dice.rollDice(); // Roll the dice
+                player.updatePosition(diceRoll, board.getBoardSize()); // Update player's position
 
-                // Roll dice
-                int diceRoll = random.nextInt(6) + 1; // Rolls a dice (1-6)
-                System.out.println(player.getName() + " rolls a " + diceRoll);
-
-                // Move player
-                int boardSize = board.getBoardSize(); 
-                player.updatePosition(diceRoll, boardSize); //Updates player position
-                System.out.println(player.getName() + " moves to position " + player.getPosition());
-
-
-                System.out.println(player.getName() + "'s turn ends.");
+                Field landedField = board.getField(player.getPosition()); // Assuming getField method in Board
+                handleFieldActions(player, landedField, bank, board, chanceCard);
+                
+                
+                if (bank.checkBankruptcy(player)) {
+                    System.out.println(player.getName() + " has gone bankrupt!");
+                    break;
+                }
             }
         }
-    
+
+        Player winner = determineWinner(players);
+        System.out.println("Winner is: " + winner.getName());
+        scanner.close();
     }
+
+    private static List<Player> setupPlayers(Scanner scanner, int numPlayers) {
+        List<Player> players = new ArrayList<>();
+    
+        for (int i = 1; i <= numPlayers; i++) {
+            System.out.print("Enter the name for Player " + i + ": ");
+            String name = scanner.nextLine();
+            PlayerPiece playerPiece = new PlayerPiece(name); 
+            Account account = new Account(20000); // Starting balance
+            players.add(new Player(name, playerPiece, account, numPlayers));
+        }
+        return players;
+    }
+
+    private static boolean isGameOver(List<Player> players) {
+        for (Player player : players) {
+            if (player.getAccount().getBalance() <= 0) { 
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void handleFieldActions(Player player, Field landedField, Bank bank, Board board, ChanceCard chanceCard) {
+        // Implement logic based on field type and game rules
+    }
+
+    private static Player determineWinner(List<Player> players) {
+        Player winner = null;
+        int maxWealth = 0;
+        for (Player player : players) {
+            int wealth = player.getAccount().getBalance(); 
+            // Add property values if needed
+            if (wealth > maxWealth) {
+                maxWealth = wealth;
+                winner = player;
+            }
+        }
+        return winner;
     }
 }
+

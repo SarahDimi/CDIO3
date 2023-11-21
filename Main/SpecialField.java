@@ -1,11 +1,11 @@
 package Main;
 
 public class SpecialField extends NormalField  {
-
+   
     protected String name;
 
         public SpecialField(String name) {
-
+        this.type="special";
         }
 
         // Visit Jail.

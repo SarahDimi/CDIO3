@@ -70,5 +70,9 @@ class Player {
 		return "Playerlist: " + Arrays.toString(players);
 	}
     
+    public boolean isBankrupt(){
+        return this.account.getBalance()<=0;
+    }
+
 }
 

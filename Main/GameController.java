@@ -1,5 +1,4 @@
 package Main;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -10,38 +9,6 @@ public class GameController {
     private List<Player> players;
     private Dice dice;
     private boolean gameOver;
-
-    public GameController() {
-         Scanner scanner = new Scanner(System.in);
-        int numPlayers = 0;
-        
-        //Initializes game with welcome message
-        System.out.println("Hello and Welcome to Monopoly Junior! If you are ready to play, write 'yes' in the terminal.");
-        String answer = scanner.nextLine();
-
-        //Gets the name of the players
-        if(answer.equalsIgnoreCase("yes")){
-            while(numPlayers < 2 || numPlayers > 4){
-                System.out.print("Enter the number of players (2-4): ");
-                if(scanner.hasNextInt()){
-                    numPlayers = scanner.nextInt();
-                    if(numPlayers < 2 || numPlayers > 4){
-                        System.out.println("Invalid number of players! The number of players must be between 2 and 4."); 
-                    }
-                } else {
-                    System.out.println("Please enter a number between 2 and 4.");
-                    scanner.next(); // Clear the invalid input
-                }
-            }
-        } else {
-            System.out.println("Exiting game.");
-            scanner.close();
-            return; // Exit the program if the player does not enter 'yes'
-        }
-
-        scanner.nextLine(); // Consume the newline after integer input
-    
-    }
 
     public GameController(List<Player> players) {
         this.board = new Board();
@@ -69,88 +36,57 @@ public class GameController {
         int roll = dice.rollDice();
         player.getPiece().moveForward(roll);
         int position = player.getPiece().getPosition() % board.getBoardSize();
+        
+        NormalField currentField = board.normalFields.get(position);
 
-        handleFieldAction(player, position);
-        // Additional logic for double rent, etc.
-    }
-
-    private void handleFieldAction(Player player, int position) {
-        // The actual implementation will depend on how you differentiate between field types
-        // Assuming you have a way to check if a field is a property, chance, or special field
-        Field currentField = board.getField(position);
-
-        // Check field type and take action
-        // You'll need to add methods or properties to your Field class to support this
-        if (currentField.isPropertyField()) {
-            handlePropertyField(player, currentField);
-        } else if (currentField.isChanceField()) {
-            handleChanceField(player);
-        } else if (currentField.isSpecialField()) {
-            handleSpecialField(player, currentField);
+        if (currentField.getType().equals("property")) {
+            handlePropertyField(player, (Field) currentField);
+        } else if (currentField.getType().equals("special")) {
+            handleSpecialField(player, (SpecialField) currentField);
         }
     }
 
     private void handlePropertyField(Player player, Field propertyField) {
-        int fieldIndex = propertyField.getFieldIndex(); // Assuming getFieldIndex method exists
-        Player owner = Bank.getFieldOwner(fieldIndex);
-    
-        if (owner != null) {
-         if(owner.equals(player)){
-
-         } else{
-            player.getAccount().withdraw(rent);
-            setOwner(playerNumber)
-         }
-           
-        } else (!owner.equals(player)) {
-            // Pay rent to the owner
-            int rent = propertyField.payRent(); // Assuming getRent method exists
-    
-            if (ownerOwnsAllInGroup(owner, propertyField)) {
-                rent *= 2; // Double the rent
+        if (propertyField.getOwner() == null) {
+          
+                bank.buyField(player, propertyField.getIndex(), propertyField.getPrice());
             }
-    
-            player.getAccount().withdraw(rent);
-            owner.getAccount().deposit(rent);
-            // Display rent payment information
-        }
-    }
-    private boolean ownerOwnsAllInGroup(Player owner, Field propertyField) {
-        String group = propertyField.getGroup();
-        for (Field field : board.getFields()) { // Assuming getFields returns all fields on the board
-            if (field.getGroup().equals(group)) {
-                if (!Bank.fieldOwnership.getOrDefault(field.getFieldIndex(), null).equals(owner)) {
-                    return false;
-                }
+         else {
+            // Field is owned, player must pay rent to the owner
+            Player owner = propertyField.getOwner();
+            int rentAmount = propertyField.getRent();
+
+            if (owner.equals(player)) {
+                System.out.println("You own this property. No rent is charged.");
+            } else {
+                System.out.println("Pay rent of $" + rentAmount + " to " + owner.getName());
+                bank.payRent(player, owner, rentAmount);
             }
         }
-        return true;
     }
 
-    private void handleChanceField(Player player) {
-        // Implement chance card drawing and effect
-    }
+    private void handleSpecialField(Player player, SpecialField specialField) {
+        String fieldType = specialField.getName();
 
-    private void handleSpecialField(Player player, Field specialField) {
-        // Implement special field logic (Go to Jail, Free Parking, etc.)
+        switch (fieldType) {
+            case "Visit Jail":
+                specialField.visitJail(player);
+                break;
+            case "Free Parking":
+                specialField.park(player);
+                break;
+            case "In Jail":
+                specialField.inJail(player);
+                break;
+            case "Start":
+                specialField.landOnStart(player);
+                break;
+            default:
+                System.out.println("Unhandled special field type: " + fieldType);
+        }
     }
 
     private void declareWinner() {
-        // Logic to determine and declare the winner
-    }
-
-    private static List<Player> setupPlayers(Scanner scanner, int numPlayers) {
-        List<Player> players = new ArrayList<>();
-    
-        for (int i = 1; i <= numPlayers; i++) {
-            System.out.print("Enter the name for Player " + i + ": ");
-            String name = scanner.nextLine();
-            PlayerPiece playerPiece = new PlayerPiece(name); 
-            Account account = new Account(2); // Starting balance
-            players.add(new Player(name, playerPiece, account, numPlayers,i-1));
-        }
-        return players;
+        // Implement logic to declare the winner based on some criteria
     }
 }
-}
-

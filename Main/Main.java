@@ -4,9 +4,12 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Main {
+    private Board board;
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int numPlayers = 0;
+        
 
         System.out.println("Hello and Welcome to Monopoly Junior! If you are ready to play, write 'yes' in the terminal.");
         String answer = scanner.nextLine();
@@ -39,22 +42,39 @@ public class Main {
         Dice dice = new Dice(6); // Initialize a dice with 6 sides
 
         // Main game loop
+
+        public static void playTurn(Player player, Dicevalues roll, Field fields, ChanceCard chancecard, Board board, Account acount, Bank bank, SpecialField specialField, PlayerPiece playerPiece){
+             int diceRoll = dice.rollDice(); // Roll the dice
+            player.updatePosition(diceRoll, board.getBoardSize()); // Update player's position
+            Field landedField = board.getField(player.getPosition()); 
+            applyCardEffect(player, playerPiece, landedField,)
+
+
+
+        }
         while (!isGameOver(players)) {
+            if(player.numberOfJailTurns <= 0){
             for (Player player : players) {
                 // Player's turn
                 int diceRoll = dice.rollDice(); // Roll the dice
                 player.updatePosition(diceRoll, board.getBoardSize()); // Update player's position
 
-                Field landedField = board.getField(player.getPosition()); // Assuming getField method in Board
-                handleFieldActions(player, landedField, bank, board, chanceCard);
-                
+                Field landedField = board.getField(player.getPosition()); 
+                applyCardEffect(player, landedField, bank, board, chanceCard);
+         }
                 
                 if (bank.checkBankruptcy(player)) {
                     System.out.println(player.getName() + " has gone bankrupt!");
                     break;
                 }
-            }
-        }
+            
+              }else if(numberOfJailCards > 0){
+                    numberOfJailCards -1;
+                    numberOfJailTurns -1 ;
+            } else{
+                player.getAccount().withdraw(1);
+                numberOfJailTurns -1;
+        } }
 
         Player winner = determineWinner(players);
         System.out.println("Winner is: " + winner.getName());

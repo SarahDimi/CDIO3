@@ -61,6 +61,9 @@ class Player {
         return position;
     }
 
+    public boolean isBankrupt() {
+        return this.account.getBalance() <= 0;
+    }
 	
 	@Override
 	public String toString() {

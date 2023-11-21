@@ -1,7 +1,7 @@
 package Main;
 
 public class Account {
-    private int balance;
+    public int balance;
     private int amount;
     Dicevalues roll = new Dicevalues();
 

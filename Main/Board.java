@@ -1,5 +1,5 @@
 package Main;
-
+import Main.SpecialField;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -59,10 +59,10 @@ public class Board {
 
 
 
-    public Field getNoramlField(int position) {
-        
+    public int getNoramlField(int position) {
+        return position;
         }
-    }
+    
 
 
     public int getBoardSize(){
@@ -72,5 +72,7 @@ public class Board {
     public String getFieldname(){
         return Field(Board());
     }
-
 }
+
+
+

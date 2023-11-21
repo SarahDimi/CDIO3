@@ -302,4 +302,7 @@ class ChanceCard extends NormalField {
             }
         }
     }
+
+    public void applyCard(Player player, Bank bank) {
+    }
 }

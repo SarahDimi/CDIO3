@@ -13,16 +13,16 @@ class Player {
     int numberOfJailTurns;
     int playerNumber;
 
-    public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers, int playerNumber){
+    public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers, int playerNumber, int numberOfJailCards, int numberOfJailTurns) {
         this.name = name;
         this.playerPiece = playerPiece;
         this.account = account;
         this.numberOfPlayers = numberOfPlayers;
-        this.playerNumber=playerNumber;
+        this.playerNumber = playerNumber;
         this.numberOfJailCards = numberOfJailCards;
         this.numberOfJailTurns = numberOfJailTurns;
-
     }
+    
 
     public String getName(){
         return name;
@@ -72,6 +72,18 @@ class Player {
     
     public boolean isBankrupt(){
         return this.account.getBalance()<=0;
+    }
+
+    public int getMoney() {
+        return 0;
+    }
+
+    public Field[] getProperties() {
+        return null;
+    }
+
+    public boolean ownsAllPropertiesOfColor(Object color) {
+        return false;
     }
 
 }

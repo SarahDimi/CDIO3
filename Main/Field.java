@@ -1,20 +1,24 @@
 package Main;
 
 public class Field extends NormalField {
-    private int owner;
+    private Player owner;
     private int price;
     private int rent;
     private String name;
 
     public Field(String name, int price, int rent) {
-        super(name); // Assuming NormalField has a constructor that takes a name parameter
+        super(index, name, rent); // Assuming NormalField has a constructor that takes a name parameter
         this.price = price;
         this.rent = rent;
-        this.owner = -1; // -1 represents no owner, adjust as needed
+    
     }
 
-    public int getOwner() {
+    public Player getOwner() {
         return owner;
+    }
+
+    public void setOwner(Player owner) {
+        this.owner = owner;
     }
 
     public int getPrice() {
@@ -26,10 +30,14 @@ public class Field extends NormalField {
     }
 
     public int getIndex() {
-        return super.getIndex(); // Assuming NormalField has a method to get the index
+        return super.getIndex(); 
     }
 
     public void setOwner(int playerNumber) {
         this.owner = playerNumber;
+    }
+
+    public Object getColor() {
+        return null;
     }
 }

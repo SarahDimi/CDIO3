@@ -1,64 +1,44 @@
 package Main;
 
-public class SpecialField extends NormalField  {
-   
+public class SpecialField extends NormalField {
     protected String name;
 
-        public SpecialField(String name) {
-        this.type="special";
-        }
-
-        // Visit Jail.
-    public static class VisitJail extends SpecialField {
-        public VisitJail() {
-            super("Visit Jail"); 
-        }
-    
-        public void visitJail(Player player){
-            System.out.println(player.getName() + " is just visiting jail.");
-        }
-    }
-    
-        //Free Parking.
-   public static class FreeParking extends SpecialField {
-        public FreeParking() {
-            super("Free Parking"); 
-        }
-    
-        public void park(Player player){
-            System.out.println(player.getName() + " is relaxing at Free Parking.");
-        }
-    }    
-        //In Jail.
-    public static class InJail extends SpecialField {
-        public InJail() {
-            super("In Jail"); 
-        }
-    
-        public void inJail(Player player){
-            System.out.println(player.getName() + " is in jail!");
-        }
-    }
-    
-        //Start Field, with start salary and passing start salary.
-public static class StartField extends SpecialField {
-    private static final int SALARY = 2; // Salary amount
-
-    public StartField() {
-        super("Start"); 
+    public SpecialField(int index, String name) {
+        super(index, name);
+        this.type = "special";
+        this.name = name;
     }
 
+    // Metode for "Visit Jail"
+    public void visitJail(Player player) {
+        System.out.println(player.getName() + " is just visiting jail.");
+    }
+
+    // Metode for "Free Parking"
+    public void park(Player player) {
+        System.out.println(player.getName() + " is relaxing at Free Parking.");
+    }
+
+    // Metode for "In Jail"
+    public void inJail(Player player) {
+        System.out.println(player.getName() + " is in jail!");
+    }
+
+    // Metode for "Start Field", med startløn og passage af startløn
     public void landOnStart(Player player) {
-        System.out.println(player.getName() + " has landed on Start. Collecting $" + SALARY);
-        player.getAccount().deposit(SALARY);
+        System.out.println(player.getName() + " has landed on Start. Collecting $" + 2000);
+        player.getAccount().deposit(2000);
     }
 
     public void passStart(Player player) {
-        System.out.println(player.getName() + " has passed Start. Collecting $" + SALARY);
-        player.getAccount().deposit(SALARY);
+        System.out.println(player.getName() + " has passed Start. Collecting $" + 2000);
+        player.getAccount().deposit(2000);
+    }
+
+    public String getName() {
+        return name;
     }
 }
 
-}
 
 // We have placed the special fields into a serperate file in order to keep better track of the code.

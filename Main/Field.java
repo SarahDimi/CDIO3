@@ -1,21 +1,26 @@
 package Main;
 
-public class Field {
+public class Field extends NormalField {
 
     protected int owner;
     protected int price;
     protected int rent;
     protected String name;
-    protected String group;
 
-        public Field(String name, int price, int rent, String group) {
-            this.group = group;
+        public Field(String name, int price, int rent) {
 
         
     
     }
 
-    public String getGroup() {
-        return group;
-    }
+        public void setOwner(int owner) {
+            this.owner = playerNumber;
+
+         
+        }
+        
+         
+
+
+
 }

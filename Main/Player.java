@@ -11,14 +11,17 @@ class Player {
     int numberOfPlayers;
     int numberOfJailCards;
     int numberOfJailTurns;
+    int playerNumber;
 
-    public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers){
+    public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers, int playerNumber){
         this.name = name;
         this.playerPiece = playerPiece;
         this.account = account;
         this.numberOfPlayers = numberOfPlayers;
+        this.playerNumber=playerNumber;
         this.numberOfJailCards = numberOfJailCards;
         this.numberOfJailTurns = numberOfJailTurns;
+
     }
 
     public String getName(){
@@ -61,9 +64,6 @@ class Player {
         return position;
     }
 
-    public boolean isBankrupt() {
-        return this.account.getBalance() <= 0;
-    }
 	
 	@Override
 	public String toString() {

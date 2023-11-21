@@ -1,6 +1,6 @@
 package Main;
 
-public class SpecialField {
+public class SpecialField extends NormalField  {
 
     protected String name;
 

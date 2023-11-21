@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-class ChanceCard {
+class ChanceCard extends NormalField {
     private List<String> cards;
 
 
@@ -59,7 +59,6 @@ class ChanceCard {
         
             currentPlayerPosition = playerPiece.getPosition();
         
-            // Hjælplærer spørgsmål
             int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
             
         

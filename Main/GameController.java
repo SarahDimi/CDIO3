@@ -94,12 +94,17 @@ public class GameController {
         int fieldIndex = propertyField.getFieldIndex(); // Assuming getFieldIndex method exists
         Player owner = Bank.getFieldOwner(fieldIndex);
     
-        if (owner == null) {
-            // Offer the player the option to buy the property
-            // ...
-        } else if (!owner.equals(player)) {
+        if (owner != null) {
+         if(owner.equals(player)){
+
+         } else{
+            player.getAccount().withdraw(rent);
+            setOwner(playerNumber)
+         }
+           
+        } else (!owner.equals(player)) {
             // Pay rent to the owner
-            int rent = propertyField.getRent(); // Assuming getRent method exists
+            int rent = propertyField.payRent(); // Assuming getRent method exists
     
             if (ownerOwnsAllInGroup(owner, propertyField)) {
                 rent *= 2; // Double the rent
@@ -134,7 +139,18 @@ public class GameController {
         // Logic to determine and declare the winner
     }
 
-    // Additional methods as needed...
+    private static List<Player> setupPlayers(Scanner scanner, int numPlayers) {
+        List<Player> players = new ArrayList<>();
+    
+        for (int i = 1; i <= numPlayers; i++) {
+            System.out.print("Enter the name for Player " + i + ": ");
+            String name = scanner.nextLine();
+            PlayerPiece playerPiece = new PlayerPiece(name); 
+            Account account = new Account(2); // Starting balance
+            players.add(new Player(name, playerPiece, account, numPlayers,i-1));
+        }
+        return players;
+    }
 }
 }
 

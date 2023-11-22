@@ -3,7 +3,6 @@ package Main;
 public class Account {
     public int balance;
     private int amount;
-    Dicevalues roll = new Dicevalues();
 
     public Account(int initialBalance) {
         this.balance = initialBalance;

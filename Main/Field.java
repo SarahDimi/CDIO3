@@ -5,12 +5,14 @@ public class Field extends NormalField {
     private int price;
     private int rent;
     private String name;
+    private String color;
 
-    public Field(String name, int price, int rent) {
+    public Field(String name, int price, int rent, String color) {
         super(index,name);
         this.price = price;
         this.rent = rent;
         this.type = "property";
+        this.color = color;
     
     }
 
@@ -36,7 +38,9 @@ public class Field extends NormalField {
 
 
     public Object getColor() {
-        return null;
+        return color;
     }
+
+   
 }
 

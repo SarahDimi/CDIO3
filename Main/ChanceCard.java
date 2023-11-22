@@ -8,7 +8,10 @@ class ChanceCard extends NormalField {
     private List<String> cards;
 
 
-    public ChanceCard() {
+    public ChanceCard( String name) {
+        super(index,name);
+        this.type= "chance";
+    
         cards = new ArrayList<>();
         cards.add("Advance to Go (Collect $2)");
         cards.add("Move up to 5 fields forward");

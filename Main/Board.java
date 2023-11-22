@@ -1,5 +1,6 @@
 package Main;
 import Main.SpecialField;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,29 +28,28 @@ public class Board {
     // Each Field is placed in correct order according to its place on the board. Name, Prices and Rent shown.
 
     private void initializeBoard() {
-
+    normalFields.add(new SpecialField.StartField("Start"));    //Start field
     normalFields.add(new Field("Istergade number 0",1,1));    //Brown field 1
     normalFields.add(new Field("DTU",1,1));    //Brown fields 2
-    normalFields.add(new SpecialField.StartField());    //Start field
-    normalFields.add(new ChanceCard());    //Chance field 1
+    normalFields.add(new ChanceCard("Chancecard"));    //Chance field 1
     normalFields.add(new Field("Blaagaards Plads",1,1));  //Light blue field 1
     normalFields.add(new Field("Shamba",1,1));    //Light blue field 2
-    normalFields.add(new SpecialField.VisitJail());     //Visiting Jail field
+    normalFields.add(new SpecialField.VisitJail("Visit Jail"));     //Visiting Jail field
     normalFields.add(new Field("Alis kebabshop",2,2));     //Pink field 1
     normalFields.add(new Field("Noerrebros Runddel",2,2));     //Pink field 2
-    normalFields.add(new ChanceCard());    //Chance field 2
+    normalFields.add(new ChanceCard("Chancecard"));    //Chance field 2
     normalFields.add(new Field("Amager",2,2));    //Orange field 1
     normalFields.add(new Field("Vesterbro",2,2));     //Orange field 2
-    normalFields.add(new SpecialField.FreeParking());     //Free parking field 
+    normalFields.add(new SpecialField.FreeParking("Freeparking"));     //Free parking field 
     normalFields.add(new Field("Holte",3,3));     //Red Field 1
     normalFields.add(new Field("Gammel Holte",3,3));     //Red Field 2
-    normalFields.add(new ChanceCard());    //Chance field 3
+    normalFields.add(new ChanceCard("Chancecard"));    //Chance field 3
     normalFields.add(new Field("Campus bar",3,3));     //Yellow field 1
     normalFields.add(new Field("Oesterbro",3,3));     //Yellow field 2
-    normalFields.add(new SpecialField.InJail());     //In Jail field
+    normalFields.add(new SpecialField.InJail("InJail"));     //In Jail field
     normalFields.add(new Field("Frederiksberg",4,4));     //Green Field 1
     normalFields.add(new Field("The Zoo",4,4));      //Green Field 2
-    normalFields.add(new ChanceCard());      //Chance field 4
+    normalFields.add(new ChanceCard("Chancecard"));      //Chance field 4
     normalFields.add(new Field("Strandvejen",5,5));    //Dark blue field 1
     normalFields.add(new Field("Hellerup",5,5));      //Dark blue field 2
    
@@ -69,10 +69,8 @@ public class Board {
         return BOARDSIZE;
     }
 
-    public String getFieldname(){
-        return Field(Board());
     }
-}
+
 
 
 

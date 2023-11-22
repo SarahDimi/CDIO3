@@ -3,10 +3,38 @@ package Main;
 public class SpecialField extends NormalField {
     protected String name;
 
-    public SpecialField(int index, String name) {
+    public SpecialField(String name) {
         super(index, name);
         this.type = "special";
         this.name = name;
+    }
+
+    static class StartField extends SpecialField{
+        public StartField(String name) {
+            super(name);
+            
+        }
+        
+    }
+
+    static class VisitJail extends SpecialField{
+        public VisitJail(String name){
+            super(name);
+        }
+    }
+
+   static class FreeParking extends SpecialField{
+        public FreeParking(String name){
+            super(name);    
+        }
+    }
+
+
+
+    static class InJail extends SpecialField{
+        public InJail(String name){
+            super(name);
+        }
     }
 
     // Metode for "Visit Jail"
@@ -38,7 +66,9 @@ public class SpecialField extends NormalField {
     public String getName() {
         return name;
     }
+
 }
+
 
 
 // We have placed the special fields into a serperate file in order to keep better track of the code.

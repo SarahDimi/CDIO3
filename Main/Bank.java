@@ -72,9 +72,6 @@ public void payJailFine(Player player, int fineAmount) {
     player.getAccount().withdraw(0);
 }
 
-public static void setOwner(int fieldIndex, Player newOwner){
-    fieldOwnership.put(fieldIndex, );
-}
 
 
 public static Player getOwner(int fieldIndex){

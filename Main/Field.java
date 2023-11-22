@@ -7,7 +7,7 @@ public class Field extends NormalField {
     private String name;
 
     public Field(String name, int price, int rent) {
-        super(index, name, rent); // Assuming NormalField has a constructor that takes a name parameter
+        super(index,name);
         this.price = price;
         this.rent = rent;
     
@@ -33,11 +33,9 @@ public class Field extends NormalField {
         return super.getIndex(); 
     }
 
-    public void setOwner(int playerNumber) {
-        this.owner = playerNumber;
-    }
 
     public Object getColor() {
         return null;
     }
 }
+

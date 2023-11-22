@@ -1,6 +1,7 @@
 package Main;
 import Main.SpecialField;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class GameController {
@@ -98,17 +99,21 @@ public class GameController {
         }
     }
 
-    private void drawChanceCard(Player player) {
+private void drawChanceCard(Player player) {
+    if (!chanceCards.isEmpty()) {
         // Træk et chancekort og følg instruktionerne
-       if(!chanceCards.isEmpty()){
         ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
         card.applyCard(player, bank);
-        chanceCards.add(card); // Læg kortet tilbage i bunken
-    }else{
-        chanceCards = initializeChanceCards();
-           ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
-        card.applyCard(player, bank);
-        chanceCards.add(card); // Læg kortet tilbage i bunken
+
+        // Tilføj kortet tilbage til en tilfældig placering i bunken
+        int randomPosition = (int) (Math.random() * chanceCards.size());
+        chanceCards.add(randomPosition, card);
+
+        // Valgfrit: Bland bunken
+        Collections.shuffle(chanceCards);
+    } else {
+        // Håndter situationen, hvor der ikke er flere kort i bunken
+        System.out.println("Ingen chancekort tilbage at trække.");
     }
 }
 

@@ -20,8 +20,8 @@ public class Field extends NormalField {
         return owner;
     }
 
-    public void setOwner(Player owner) {
-        this.owner = owner;
+    public void setOwner(Player player) {
+        this.owner = player;
     }
 
     public int getPrice() {

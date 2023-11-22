@@ -9,7 +9,7 @@ public class Board {
     private List<Field> fields;
     private List<Player> players;
     private int currentPlayerPosition;
-    private List<ChanceCard> chancecard; // Assuming ChanceCard is a class you've defined
+    private List<ChanceCard> chancecard;
     private List<SpecialField> specialfield;
     private static final int BOARDSIZE = 24;
 

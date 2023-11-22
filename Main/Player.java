@@ -44,6 +44,10 @@ class Player {
 		players = new Player[numberOfPlayers];
 	}
 	
+    public int getplayerNumber(){
+        return playerNumber;
+    }
+
 	public void addPlayer(Player player, int index) {
 		players[index] = player;
 	}

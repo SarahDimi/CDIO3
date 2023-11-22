@@ -29,7 +29,9 @@ public class GameController {
         while (!gameOver) {
             for (Player player : players) {
                 if (!player.isBankrupt()) {
+                    System.out.println("Its "+ player.getName() +" turn");
                     takeTurn(player);
+
                 } else {
                     gameOver = true;
                     break;
@@ -41,6 +43,7 @@ public class GameController {
 
     private void takeTurn(Player player) {
         int roll = dice.rollDice();
+        System.out.println(roll);
         player.getPiece().moveForward(roll);
         int position = player.getPiece().getPosition() % board.getBoardSize();
 
@@ -97,10 +100,17 @@ public class GameController {
 
     private void drawChanceCard(Player player) {
         // Træk et chancekort og følg instruktionerne
+       if(!chanceCards.isEmpty()){
         ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
         card.applyCard(player, bank);
         chanceCards.add(card); // Læg kortet tilbage i bunken
+    }else{
+        chanceCards = initializeChanceCards();
+           ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
+        card.applyCard(player, bank);
+        chanceCards.add(card); // Læg kortet tilbage i bunken
     }
+}
 
     private List<ChanceCard> initializeChanceCards() {
         // Implementer initialisering af chancekortene her

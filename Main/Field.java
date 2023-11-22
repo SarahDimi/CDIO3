@@ -10,6 +10,7 @@ public class Field extends NormalField {
         super(index,name);
         this.price = price;
         this.rent = rent;
+        this.type = "property";
     
     }
 

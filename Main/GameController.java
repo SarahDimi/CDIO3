@@ -67,6 +67,7 @@ public class GameController {
         if (propertyField.getOwner() == null) {
             bank.buyField(player, propertyField.getIndex(), propertyField.getPrice());
             System.out.println("You landed on: "+ propertyField.getName() + " It is a: "+ propertyField.getColor() );
+            player.addProperty(propertyField);
         } else {
             Player owner = propertyField.getOwner();
             int rentAmount = propertyField.getRent();

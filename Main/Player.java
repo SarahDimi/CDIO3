@@ -1,5 +1,7 @@
     package Main;
-    import java.util.Arrays;
+    import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
     class Player {
         
@@ -12,6 +14,7 @@
         int numberOfJailCards;
         int numberOfJailTurns;
         int playerNumber;
+        private List<Field> properties;
 
         public Player(String name, PlayerPiece playerPiece, Account account, int numberOfPlayers, int playerNumber, int numberOfJailCards, int numberOfJailTurns) {
             this.name = name;
@@ -21,6 +24,7 @@
             this.playerNumber = playerNumber;
             this.numberOfJailCards = numberOfJailCards;
             this.numberOfJailTurns = numberOfJailTurns;
+            this.properties = new ArrayList<>();
         }
         
 
@@ -82,8 +86,12 @@
             return 0;
         }
 
-        public Field[] getProperties() {
-            return null;
+        public List<Field> getProperties() {
+            return properties;
+        }
+
+        public void addProperty(Field property) {
+            properties.add(property);
         }
 
         public boolean ownsAllPropertiesOfColor(Object color) {

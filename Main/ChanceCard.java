@@ -38,6 +38,7 @@ class ChanceCard extends NormalField {
     }
     public void applyCardEffect(Player player, String cardMessage, int currentPlayerPosition, Board boardSize,List<Player> players) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("You have drawn a chancecard! ");
         if (cardMessage.equals("Advance to Go (Collect $2)")) {
             player.getAccount().deposit(2);
             System.out.println(player.getName() + " Advances to Go and collects $2");

@@ -36,7 +36,7 @@ class ChanceCard extends NormalField {
         cards.remove(randomIndex); 
         return message;
     }
-    public void applyCardEffect(Player player, String cardMessage, PlayerPiece playerPiece, int currentPlayerPosition, Board boardSize,List<Player> players) {
+    public void applyCardEffect(Player player, String cardMessage, int currentPlayerPosition, Board boardSize,List<Player> players) {
         Scanner scanner = new Scanner(System.in);
         if (cardMessage.equals("Advance to Go (Collect $2)")) {
             player.getAccount().deposit(2);
@@ -44,28 +44,28 @@ class ChanceCard extends NormalField {
 
             int startFieldIndex = 0; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
            int spacesToMove = ((startFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
 
         } else if (cardMessage.equals("Move up to 5 fields forward")) {
             Random random = new Random();
 
             int spacesToMove = random.nextInt(6); 
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
             System.out.println(player.getName() + " moves " + spacesToMove + " spaces forward.");
 
         } else if (cardMessage.equals("Free field! Move to an ORANGE field. If available, you get it for free, otherwise pay rent.")) {
             int orangeFieldIndex = 10; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
             
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(orangeFieldIndex);
             if (owner == null) {
@@ -80,7 +80,7 @@ class ChanceCard extends NormalField {
             String answer = scanner.nextLine();
 
             if(answer == "1"){
-                playerPiece.moveForward(1);
+                player.getPiece().moveForward(1);
             } else {
                 drawCard();
             }
@@ -95,11 +95,11 @@ class ChanceCard extends NormalField {
             if(fieldAnswer.equalsIgnoreCase ("orange")){
             int orangeFieldIndex = 10; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((orangeFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(orangeFieldIndex);
             if (owner == null) {
@@ -113,11 +113,11 @@ class ChanceCard extends NormalField {
         } else {
             int greenFieldIndex = 19; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
            int spacesToMove = ((greenFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(greenFieldIndex);
             if (owner == null) {
@@ -132,11 +132,11 @@ class ChanceCard extends NormalField {
         } else if (cardMessage.equals("Free field! Move to a LIGHT BLUE field. If available, you get it for free, otherwise pay rent.")) {
             int lightBlueFieldIndex = 4; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((lightBlueFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(lightBlueFieldIndex);
             if (owner == null) {
@@ -147,21 +147,18 @@ class ChanceCard extends NormalField {
                 Bank.payRent(player, owner, rentAmount);
                 System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the ORANGE field.");
             }
-        } else if (cardMessage.equals("You can get out of jail. Keep this card until you need it")) {
-            // Implement logic to keep the card for later use when the player is in jail
-        } else if (cardMessage.equals("It is your birthday!! All other players must give you $1. Congratulations!!")) {
-            // Implement logic to collect $1 from all other players
-        } else if (cardMessage.equals("Free field! Move to a PINK or DARK BLUE field. If available, you get it for free, otherwise pay rent.")) {
+        
+            } else if (cardMessage.equals("Free field! Move to a PINK or DARK BLUE field. If available, you get it for free, otherwise pay rent.")) {
             System.out.println("You can now choose between a DARK BLUE field or a PINK field. Write which you choose in the");
             String fieldAnswer = scanner.nextLine();
             if(fieldAnswer.equalsIgnoreCase ("dark blue")){
             int darkBlueFieldIndex = 22; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((darkBlueFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(darkBlueFieldIndex);
             if (owner == null) {
@@ -175,11 +172,11 @@ class ChanceCard extends NormalField {
         } else {
             int pinkFieldIndex = 7; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((pinkFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(pinkFieldIndex);
             if (owner == null) {
@@ -197,11 +194,11 @@ class ChanceCard extends NormalField {
         } else if (cardMessage.equals("Free field! Move to a RED field. If available, you get it for free, otherwise pay rent.")) {
             int redFieldIndex = 13; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((redFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(redFieldIndex);
             if (owner == null) {
@@ -218,11 +215,11 @@ class ChanceCard extends NormalField {
             if(fieldAnswer.equalsIgnoreCase ("light blue")){
             int lightBlueFieldIndex = 4; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((lightBlueFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(lightBlueFieldIndex);
             if (owner == null) {
@@ -236,11 +233,11 @@ class ChanceCard extends NormalField {
         } else {
             int redFieldIndex = 13; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((redFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(redFieldIndex);
             if (owner == null) {
@@ -258,11 +255,11 @@ class ChanceCard extends NormalField {
             if(fieldAnswer.equalsIgnoreCase ("brown")){
             int brownFieldIndex = 1; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((brownFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(brownFieldIndex);
             if (owner == null) {
@@ -276,11 +273,11 @@ class ChanceCard extends NormalField {
         } else {
             int yellowFieldIndex = 16; 
         
-            currentPlayerPosition = playerPiece.getPosition();
+            currentPlayerPosition = player.getPosition();
         
             int spacesToMove = ((yellowFieldIndex - currentPlayerPosition + boardSize.getBoardSize() )%boardSize.getBoardSize() );
         
-            playerPiece.moveForward(spacesToMove);
+            player.getPiece().moveForward(spacesToMove);
         
             Player owner = Bank.getFieldOwner(yellowFieldIndex);
             if (owner == null) {

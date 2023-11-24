@@ -74,7 +74,7 @@ public class GameController {
         if (propertyField.getOwner() == null) {
             // Property is not owned, allow the player to buy it
             bank.buyField(player, propertyField.getIndex(), propertyField.getPrice());
-            System.out.println("You landed on: " + propertyField.getName() + " It is a: " + propertyField.getColor());
+            System.out.println("You landed on: " + propertyField.getName() + " It is a: " + propertyField.getColor() + " the rent is " + propertyField.getRent());
             player.addProperty(propertyField); // Add property to the player's list
         } else {
             // Property is already owned, handle rent

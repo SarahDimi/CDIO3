@@ -16,15 +16,16 @@ public class Bank {
     }
 
     public void buyField(Player player, int fieldIndex, int price) {
-        if (fieldOwnership.containsKey(owner)) {
-            System.out.println("Field already owned.");
+        if (fieldOwnership.containsKey(fieldIndex)) {
+            System.out.println("Field already owned by " + fieldOwnership.get(fieldIndex).getName());
             return;
         }
         
-        player.getAccount().withdraw(price);  //Withdraw the price from the player's account
-        this.owner = player; // Set player as the owner of the field
-        System.out.println("Fields succesfully purchased");
+        player.getAccount().withdraw(price);  // Withdraw the price from the player's account
+        fieldOwnership.put(1,player); // Update ownership map
+        System.out.println("Field successfully purchased");
     }
+    
 
     public static void payRent(Player payer, Player owner, int rentAmount) {
         payer.getAccount().withdraw(0); // Withdraw rent from payer's account

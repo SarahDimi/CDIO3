@@ -41,7 +41,7 @@ public class Main {
             String playerName = scanner.nextLine();
             
             // Opret PlayerPiece-objekt baseret på indtastningen
-            System.out.print("Enter " + playerName + "'s piece (e.g., hat, car, etc.): ");
+            System.out.print("Enter " + playerName + "'s piece (Fx., hat, car, bike): ");
             String playerPieceName = scanner.nextLine();
             PlayerPiece playerPiece = new PlayerPiece(playerPieceName);
             

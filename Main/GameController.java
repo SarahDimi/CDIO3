@@ -109,7 +109,8 @@ public class GameController {
         if (!chanceCards.isEmpty()) {
             // Træk et chancekort og følg instruktionerne
             ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
-            card.applyCard(player, bank);
+            String cardMessage = card.drawCard();
+            card.applyCardEffect(player, cardMessage, player.getPiece(), player.getPiece().getPosition(), board, players);
     
             // Tilføj kortet tilbage til en tilfældig placering i bunken
             int randomPosition = (int) (Math.random() * (chanceCards.size() + 1)); // +1 to allow insertion at the end
@@ -124,9 +125,10 @@ public class GameController {
     }
     
     private List<ChanceCard> initializeChanceCards() {
-        // Implementer initialisering af chancekortene her
         List<ChanceCard> cards = new ArrayList<>();
-        // Tilføj chancekort til listen
+        for (int i = 0; i < 14; i++) {
+            cards.add(new ChanceCard("Chance Card " + (i + 1)));
+        }
         return cards;
     }
 

@@ -3,6 +3,7 @@ import Main.SpecialField;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
 
 public class GameController {
 
@@ -59,7 +60,13 @@ public class GameController {
         } else if (currentField.getType().equals("chance")) {
             drawChanceCard(player);
         }
-      
+
+         // Prompt to press Enter to end the turn
+         Scanner turnScanner = new Scanner(System.in);
+         System.out.println("Press Enter to end " + player.getName() + "'s turn.");
+         System.out.println("--------------------------------");
+         turnScanner.nextLine(); // Waits for the user to press Enter
+
     }
 
 

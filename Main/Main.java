@@ -47,7 +47,7 @@ public class Main {
             
 
             // Opret Player-objekt og tilføj det til listen
-            Player player = new Player(playerName, playerPiece, new Account(2), numPlayers, i + 1, i, i);
+            Player player = new Player(playerName, playerPiece, new Account(10), numPlayers, i + 1, i, i);
             players.add(player);
         }
 

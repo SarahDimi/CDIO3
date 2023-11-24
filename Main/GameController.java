@@ -69,30 +69,26 @@ public class GameController {
 
     }
 
-
     private void handlePropertyField(Player player, Field propertyField) {
-        if (propertyField.getOwner() == null) {
+        Player fieldOwner = Bank.getFieldOwner(propertyField.getIndex());
+        
+        if (fieldOwner == null) {
             // Property is not owned, allow the player to buy it
             bank.buyField(player, propertyField.getIndex(), propertyField.getPrice());
             System.out.println("You landed on: " + propertyField.getName() + " It is a: " + propertyField.getColor() + " the rent is " + propertyField.getRent());
             player.addProperty(propertyField); // Add property to the player's list
-        } else {
-            // Property is already owned, handle rent
-            Player owner = propertyField.getOwner();
-            if (!owner.equals(player)) {
-                // The player is not the owner, charge rent
-                int rentAmount = propertyField.getRent();
-                if (player.ownsAllPropertiesOfColor(propertyField.getColor())) {
-                    rentAmount *= 2; // Double rent if the player owns all properties of this color
-                }
-                System.out.println("Pay rent of $" + rentAmount + " to " + owner.getName());
-                Bank.payRent(player, owner, rentAmount);
-            } else {
-                // The player owns this property, no rent is charged
-                System.out.println("You own this property. No rent is charged.");
-            }
-        }
+        } else if (!fieldOwner.equals(player)) {
+            // Property is already owned by another player, handle rent
+            int rentAmount = propertyField.getRent();
+            System.out.println("Pay rent of $" + rentAmount + " to " + fieldOwner.getName());
+            Bank.payRent(player, fieldOwner, rentAmount);
+        } else if (fieldOwner.equals(player)){
+            // The player owns this property, no rent is charged
+            System.out.println("You own this property. No rent is charged.");
     }
+    }
+    
+    
     
 
     private void handleSpecialField(Player player, SpecialField specialField) {

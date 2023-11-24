@@ -53,7 +53,7 @@ class ChanceCard extends NormalField {
         } else if (cardMessage.equals("Move up to 5 fields forward")) {
             Random random = new Random();
 
-            int spacesToMove = random.nextInt(6); 
+            int spacesToMove = random.nextInt(5) + 1; 
             player.getPiece().moveForward(spacesToMove);
             System.out.println(player.getName() + " moves " + spacesToMove + " spaces forward.");
 

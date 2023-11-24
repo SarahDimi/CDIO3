@@ -54,13 +54,13 @@ public class SpecialField extends NormalField {
 
     // Metode for "Start Field", med startløn og passage af startløn
     public void landOnStart(Player player) {
-        System.out.println(player.getName() + " has landed on Start. Collecting $" + 2000);
-        player.getAccount().deposit(2000);
+        System.out.println(player.getName() + " has landed on Start. Collecting $" + 2);
+        player.getAccount().deposit(2);
     }
 
     public void passStart(Player player) {
-        System.out.println(player.getName() + " has passed Start. Collecting $" + 2000);
-        player.getAccount().deposit(2000);
+        System.out.println(player.getName() + " has passed Start. Collecting $" + 2);
+        player.getAccount().deposit(2);
     }
 
     public String getName() {

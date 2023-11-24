@@ -42,7 +42,7 @@ public class Field extends NormalField {
         return color;
     }
     public  String getName(){
-        return name;
+        return super.name;
     }
    
 }

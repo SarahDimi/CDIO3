@@ -104,24 +104,24 @@ public class GameController {
         }
     }
 
-private void drawChanceCard(Player player) {
-    if (!chanceCards.isEmpty()) {
-        // Træk et chancekort og følg instruktionerne
-        ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
-        card.applyCard(player, bank);
-
-        // Tilføj kortet tilbage til en tilfældig placering i bunken
-        int randomPosition = (int) (Math.random() * chanceCards.size());
-        chanceCards.add(randomPosition, card);
-
-        // Valgfrit: Bland bunken
-        Collections.shuffle(chanceCards);
-    } else {
-        // Håndter situationen, hvor der ikke er flere kort i bunken
-        System.out.println("Ingen chancekort tilbage at trække.");
+    private void drawChanceCard(Player player) {
+        if (!chanceCards.isEmpty()) {
+            // Træk et chancekort og følg instruktionerne
+            ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
+            card.applyCard(player, bank);
+    
+            // Tilføj kortet tilbage til en tilfældig placering i bunken
+            int randomPosition = (int) (Math.random() * (chanceCards.size() + 1)); // +1 to allow insertion at the end
+            chanceCards.add(randomPosition, card);
+    
+            // Valgfrit: Bland bunken
+            Collections.shuffle(chanceCards);
+        } else {
+            // Håndter situationen, hvor der ikke er flere kort i bunken
+            System.out.println("No chance cards left to draw");
+        }
     }
-}
-
+    
     private List<ChanceCard> initializeChanceCards() {
         // Implementer initialisering af chancekortene her
         List<ChanceCard> cards = new ArrayList<>();

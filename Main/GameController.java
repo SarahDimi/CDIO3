@@ -110,7 +110,7 @@ public class GameController {
             // Træk et chancekort og følg instruktionerne
             ChanceCard card = chanceCards.remove(0); // Fjern det trukne kort fra bunken
             String cardMessage = card.drawCard();
-            card.applyCardEffect(player, cardMessage, player.getPiece(), player.getPiece().getPosition(), board, players);
+            card.applyCardEffect(player, cardMessage, player.getPiece().getPosition(), board, players);
     
             // Tilføj kortet tilbage til en tilfældig placering i bunken
             int randomPosition = (int) (Math.random() * (chanceCards.size() + 1)); // +1 to allow insertion at the end

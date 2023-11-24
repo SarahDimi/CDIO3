@@ -16,7 +16,7 @@ public class Bank {
     }
 
     public void buyField(Player player, int fieldIndex, int price) {
-        if (fieldOwnership.containsKey(fieldIndex)) {
+        if (fieldOwnership.containsKey(owner)) {
             System.out.println("Field already owned.");
             return;
         }

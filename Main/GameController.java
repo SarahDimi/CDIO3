@@ -43,8 +43,9 @@ public class GameController {
     }
 
     private void takeTurn(Player player) {
+        System.out.println("You have : "+ player.getAccount().getBalance()+ " money left");
         int roll = dice.rollDice();
-        System.out.println(roll);
+        System.out.println("You have rolled a: " +roll);
         player.getPiece().moveForward(roll);
         int position = player.getPiece().getPosition() % board.getBoardSize();
 
@@ -52,16 +53,20 @@ public class GameController {
 
         if (currentField.getType().equals("property")) {
             handlePropertyField(player, (Field) currentField);
+
         } else if (currentField.getType().equals("special")) {
             handleSpecialField(player, (SpecialField) currentField);
         } else if (currentField.getType().equals("chance")) {
             drawChanceCard(player);
         }
+      
     }
+
 
     private void handlePropertyField(Player player, Field propertyField) {
         if (propertyField.getOwner() == null) {
             bank.buyField(player, propertyField.getIndex(), propertyField.getPrice());
+            System.out.println("You landed on: "+ propertyField.getName() + "It is a: "+ propertyField.getColor() );
         } else {
             Player owner = propertyField.getOwner();
             int rentAmount = propertyField.getRent();

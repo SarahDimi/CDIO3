@@ -1,11 +1,11 @@
 package Main;
-
 import java.util.HashMap;
 import java.util.Map;
 
 public class Bank {
     static Map<Integer, Player> fieldOwnership;
     private static final int PASS_START_MONEY = 2; // 2M distributed for passing start
+    private Player owner;
 
     public Bank() {
         fieldOwnership = new HashMap<>();
@@ -21,8 +21,8 @@ public class Bank {
             return;
         }
         
-        player.getAccount().withdraw(0); // Withdraw the price from the player's account
-        fieldOwnership.put(fieldIndex, player); // Set player as the owner of the field
+        player.getAccount().withdraw(price);  //Withdraw the price from the player's account
+        this.owner = player; // Set player as the owner of the field
         System.out.println("Fields succesfully purchased");
     }
 

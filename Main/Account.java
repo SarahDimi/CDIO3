@@ -1,6 +1,7 @@
 package Main;
 
 public class Account {
+    Player player;
     public int balance;
     private int amount;
 

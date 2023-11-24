@@ -13,6 +13,7 @@ public class Field extends NormalField {
         this.rent = rent;
         this.type = "property";
         this.color = color;
+        
     
     }
 
@@ -37,10 +38,12 @@ public class Field extends NormalField {
     }
 
 
-    public Object getColor() {
+    public String getColor() {
         return color;
     }
-
+    public  String getName(){
+        return name;
+    }
    
 }
 

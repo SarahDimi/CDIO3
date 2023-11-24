@@ -86,7 +86,7 @@ class ChanceCard extends NormalField {
             System.out.println(player.getName() + " pays $2 to the bank for eating to much candy");
         } else if (cards.equals("Free field! Move to the first ORANGE or GREEN field. If the field is available, you get it for free otherwise you must pay rent to the owner")) {
 
-            System.out.println("You can now choose between a ORANGE field or a GREEN field. Write which you choose in the");
+            System.out.println("You can now choose between a ORANGE field or a GREEN field. Write which you choose in the termianl");
             String fieldAnswer = scanner.nextLine();
 
             if(fieldAnswer.equalsIgnoreCase ("orange")){
@@ -146,7 +146,7 @@ class ChanceCard extends NormalField {
             }
         
             } else if (cards.equals("Free field! Move to the first PINK or DARK BLUE field. If the field is available, you get it for free otherwise you must pay rent to the owner")) {
-            System.out.println("You can now choose between a DARK BLUE field or a PINK field. Write which you choose in the");
+            System.out.println("You can now choose between a DARK BLUE field or a PINK field. Write which you choose in the termianl");
             String fieldAnswer = scanner.nextLine();
             if(fieldAnswer.equalsIgnoreCase ("dark blue")){
             int darkBlueFieldIndex = 22; 
@@ -207,7 +207,7 @@ class ChanceCard extends NormalField {
                 System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the ORANGE field.");
             }
         } else if (cards.equals("Free field! Move to the first LIGHT BLUE or RED field. If the field is available, you get it for free otherwise you must pay rent to the owner")) {
-            System.out.println("You can now choose between a LIGHT BLUE field or a RED field. Write which you choose");
+            System.out.println("You can now choose between a LIGHT BLUE field or a RED field. Write which you choose termianl");
             String fieldAnswer = scanner.nextLine();
             if(fieldAnswer.equalsIgnoreCase ("light blue")){
             int lightBlueFieldIndex = 4; 
@@ -247,7 +247,7 @@ class ChanceCard extends NormalField {
             }
         }
         } else if (cards.equals("Free field! Move to the first BROWN or YELLOW field. If the field is available, you get it for free otherwise you must pay rent to the owner")) {
-            System.out.println("You can now choose between a BROWN field or a YELLOW field. Write which you choose in the");
+            System.out.println("You can now choose between a BROWN field or a YELLOW field. Write which you choose in the termianl");
             String fieldAnswer = scanner.nextLine();
             if(fieldAnswer.equalsIgnoreCase ("brown")){
             int brownFieldIndex = 1; 
@@ -261,11 +261,11 @@ class ChanceCard extends NormalField {
             Player owner = Bank.getFieldOwner(brownFieldIndex);
             if (owner == null) {
                 Bank.fieldOwnership.put(brownFieldIndex, player);
-                System.out.println(player.getName() + " acquires the DARK BLUE field for free.");
+                System.out.println(player.getName() + " acquires the BROWN field for free.");
             } else {
                 int rentAmount = 1;
                 Bank.payRent(player, owner, rentAmount);
-                System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the DARK BLUE field.");
+                System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the BROWN field.");
             }
         } else {
             int yellowFieldIndex = 16; 
@@ -279,11 +279,11 @@ class ChanceCard extends NormalField {
             Player owner = Bank.getFieldOwner(yellowFieldIndex);
             if (owner == null) {
                 Bank.fieldOwnership.put(yellowFieldIndex, player);
-                System.out.println(player.getName() + " acquires the GREEN field for free.");
+                System.out.println(player.getName() + " acquires the YELLOW field for free.");
             } else {
                 int rentAmount = 3; 
                 Bank.payRent(player, owner, rentAmount);
-                System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the GREEN field.");
+                System.out.println(player.getName() + " pays rent to " + owner.getName() + " for the YELLOW field.");
             }
         }
         }else if(cards.equals("You can get out of jail. Keep this card until you need it")){

@@ -153,6 +153,7 @@ public class GameController {
             // Tæl værdien af spillerens ejendomme og læg til pengebeholdningen
             for (Field property : player.getProperties()) {
                 playerNetWorth += property.getPrice();
+                playerNetWorth += player.getAccount().getBalance();
             }
     
             if (playerNetWorth > highestNetWorth) {
